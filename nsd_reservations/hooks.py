@@ -10,58 +10,9 @@ has_web_view = 0
 
 required_apps = []
 
-fixtures = [
-    {
-        "dt": "Role",
-        "filters": [
-            [
-                "name",
-                "in",
-                [
-                    "Meeting Room User",
-                    "Meeting Room Manager",
-                ],
-            ]
-        ]
-    },
-    {
-        "dt": "Workflow",
-        "filters": [
-            [
-                "name",
-                "=",
-                "Meeting Reservation Approval",
-            ]
-        ]
-    },
-    {
-        "dt": "Workflow State",
-        "filters": [
-            [
-                "parent",
-                "=",
-                "Meeting Reservation Approval",
-            ]
-        ]
-    },
-    {
-        "dt": "Workflow Action",
-        "filters": [
-            [
-                "parent",
-                "=",
-                "Meeting Reservation Approval",
-            ]
-        ]
-    },
-]
-
 docevents = {
     "Room Reservation": {
         "on_update": "nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.validate_reservation",
         "before_insert": "nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.set_default_fields",
     }
 }
-
-
-
