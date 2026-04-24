@@ -15,12 +15,7 @@ modules = [
     }
 ]
 
-doc_events = {
-    "Room Reservation": {
-        "validate": "nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.validate_reservation",
-        "on_submit": "nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.on_submit_reservation",
-    }
-}
+doc_events = {}
 
 doctype_js = {
     "Room Reservation": "public/js/room_reservation.js",
