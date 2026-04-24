@@ -6,6 +6,8 @@ app_email = "info@nsd-eg.com"
 app_license = "MIT"
 app_version = "1.0.0"
 
+has_web_view = 0
+
 required_apps = []
 
 fixtures = [
