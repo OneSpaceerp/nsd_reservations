@@ -1,0 +1,67 @@
+{
+    "name": "Meeting Room",
+    "doctype": "DocType",
+    "module": "Meeting Management",
+    "custom": 0,
+    "fields": [
+        {
+            "fieldname": "room_name",
+            "fieldtype": "Data",
+            "label": "Room Name",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "capacity",
+            "fieldtype": "Int",
+            "label": "Capacity",
+            "description": "Maximum number of attendees"
+        },
+        {
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "label": "Is Active",
+            "default": 1
+        },
+        {
+            "fieldname": "description",
+            "fieldtype": "Small Text",
+            "label": "Description"
+        },
+        {
+            "fieldname": "location",
+            "fieldtype": "Data",
+            "label": "Location"
+        },
+        {
+            "fieldname": "sort_order",
+            "fieldtype": "Int",
+            "label": "Sort Order"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "Meeting Room Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1
+        },
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1
+        },
+        {
+            "role": "Meeting Room User",
+            "read": 1,
+            "export": 1
+        }
+    ],
+    "sort_field": "sort_order",
+    "sort_order": "ASC"
+}

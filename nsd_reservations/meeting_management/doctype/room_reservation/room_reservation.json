@@ -1,0 +1,155 @@
+{
+    "name": "Room Reservation",
+    "doctype": "DocType",
+    "module": "Meeting Management",
+    "custom": 0,
+    "submittable": 1,
+    "naming_series": "RES-.YYYY.-.####",
+    "fields": [
+        {
+            "fieldname": "reservation_title",
+            "fieldtype": "Data",
+            "label": "Reservation Title"
+        },
+        {
+            "fieldname": "meeting_room",
+            "fieldtype": "Link",
+            "options": "Meeting Room",
+            "label": "Meeting Room",
+            "reqd": 1
+        },
+        {
+            "fieldname": "start_time",
+            "fieldtype": "Datetime",
+            "label": "Start Time",
+            "reqd": 1
+        },
+        {
+            "fieldname": "end_time",
+            "fieldtype": "Datetime",
+            "label": "End Time",
+            "reqd": 1
+        },
+        {
+            "fieldname": "person_in_charge",
+            "fieldtype": "Link",
+            "options": "User",
+            "label": "Person in Charge",
+            "reqd": 1
+        },
+        {
+            "fieldname": "department",
+            "fieldtype": "Link",
+            "options": "Department",
+            "label": "Department",
+            "reqd": 1
+        },
+        {
+            "fieldname": "meeting_reason",
+            "fieldtype": "Small Text",
+            "label": "Meeting Reason",
+            "reqd": 1
+        },
+        {
+            "fieldname": "number_of_attendees",
+            "fieldtype": "Int",
+            "label": "Number of Attendees",
+            "reqd": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "options": "Draft\nPending Manager Approval\nReserved\nRejected\nCancelled",
+            "label": "Status",
+            "read_only": 1,
+            "default": "Draft"
+        },
+        {
+            "fieldname": "workflow_state",
+            "fieldtype": "Link",
+            "options": "Workflow State",
+            "label": "Workflow State",
+            "read_only": 1,
+            "hidden": 1
+        },
+        {
+            "fieldname": "approved_by",
+            "fieldtype": "Link",
+            "options": "User",
+            "label": "Approved By",
+            "read_only": 1
+        },
+        {
+            "fieldname": "approved_on",
+            "fieldtype": "Datetime",
+            "label": "Approved On",
+            "read_only": 1
+        },
+        {
+            "fieldname": "rejection_reason",
+            "fieldtype": "Small Text",
+            "label": "Rejection Reason"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Text",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "is_conflict",
+            "fieldtype": "Check",
+            "label": "Is Conflict",
+            "hidden": 1
+        },
+        {
+            "fieldname": "source",
+            "fieldtype": "Data",
+            "label": "Source",
+            "hidden": 1
+        },
+        {
+            "fieldname": "company",
+            "fieldtype": "Link",
+            "options": "Company",
+            "label": "Company"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "Meeting Room User",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1
+        },
+        {
+            "role": "Meeting Room Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 1,
+            "cancel": 1,
+            "export": 1
+        },
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 1,
+            "cancel": 1,
+            "export": 1
+        }
+    ],
+    "calendar_view": {
+        "fieldname": "start_time",
+        "end_fieldname": "end_time",
+        "title_field": "meeting_room",
+        "color_field": "status"
+    },
+    "sort_field": "start_time",
+    "sort_order": "ASC"
+}

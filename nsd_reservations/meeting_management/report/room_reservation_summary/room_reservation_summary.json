@@ -1,0 +1,10 @@
+{
+    "name": "Room Reservation Summary",
+    "doctype": "Report",
+    "report_name": "Room Reservation Summary",
+    "report_type": "Report Builder",
+    "reference_doctype": "Room Reservation",
+    "module": "Meeting Management",
+    "is_standard": 1,
+    "columns": ["meeting_room", "start_time", "end_time", "person_in_charge", "department", "status", "approved_by"]
+}

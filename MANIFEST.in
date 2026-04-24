@@ -1,0 +1,7 @@
+include *.py
+include *.txt
+include *.md
+include *.rst
+include MANIFEST.in
+recursive-include nsd_reservations *
+recursive-include requirements.txt *
