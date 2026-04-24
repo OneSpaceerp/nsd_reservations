@@ -1,7 +1,0 @@
-{
-  "app": "nsd_reservations",
-  "default": [
-    "js/room_reservation.js"
-  ],
-  "override_workspace": []
-}

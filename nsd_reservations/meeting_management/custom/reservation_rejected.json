@@ -1,9 +1,0 @@
-{
-  "name": "Reservation Rejected",
-  "doctype": "Email Template",
-  "module": "Meeting Management",
-  "is_system_generated": 0,
-  "subject": "Reservation Rejected - {{ reservation.meeting_room }}",
-  "response_html": "Your reservation has been rejected.\n\n<b>Reservation Details:</b>\n<ul>\n<li><b>Room:</b> {{ reservation.meeting_room }}</li>\n<li><b>Start Time:</b> {{ reservation.start_time }}</li>\n<li><b>End Time:</b> {{ reservation.end_time }}</li>\n<li><b>Rejected By:</b> {{ reservation.approved_by }}</li>\n<li><b>Rejection Reason:</b> {{ reservation.rejection_reason }}</li>\n</ul>\n\n<p>Please contact the manager for more information.</p>\n",
-  "static_html": "Your reservation has been rejected.\n\n<b>Reservation Details:</b>\n<ul>\n<li><b>Room:</b> {{ reservation.meeting_room }}</li>\n<li><b>Start Time:</b> {{ reservation.start_time }}</li>\n<li><b>End Time:</b> {{ reservation.end_time }}</li>\n<li><b>Rejected By:</b> {{ reservation.approved_by }}</li>\n<li><b>Rejection Reason:</b> {{ reservation.rejection_reason }}</li>\n</ul>\n\n<p>Please contact the manager for more information.</p>\n"
-}

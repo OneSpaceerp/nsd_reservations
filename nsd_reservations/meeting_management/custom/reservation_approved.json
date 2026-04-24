@@ -1,9 +1,0 @@
-{
-  "name": "Reservation Approved",
-  "doctype": "Email Template",
-  "module": "Meeting Management",
-  "is_system_generated": 0,
-  "subject": "Reservation Approved - {{ reservation.meeting_room }}",
-  "response_html": "Your reservation has been approved.\n\n<b>Reservation Details:</b>\n<ul>\n<li><b>Room:</b> {{ reservation.meeting_room }}</li>\n<li><b>Start Time:</b> {{ reservation.start_time }}</li>\n<li><b>End Time:</b> {{ reservation.end_time }}</li>\n<li><b>Approved By:</b> {{ reservation.approved_by }}</li>\n</ul>\n\n<p>Thank you!</p>\n",
-  "static_html": "Your reservation has been approved.\n\n<b>Reservation Details:</b>\n<ul>\n<li><b>Room:</b> {{ reservation.meeting_room }}</li>\n<li><b>Start Time:</b> {{ reservation.start_time }}</li>\n<li><b>End Time:</b> {{ reservation.end_time }}</li>\n<li><b>Approved By:</b> {{ reservation.approved_by }}</li>\n</ul>\n\n<p>Thank you!</p>\n"
-}
