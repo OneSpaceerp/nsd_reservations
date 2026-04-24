@@ -1,0 +1,68 @@
+app_name = "nsd_reservations"
+app_title = "NSD Reservations"
+app_publisher = "Nest Software Development"
+app_description = "Meeting Room Reservation Module for ERPNext"
+app_email = "info@nsd-eg.com"
+app_license = "MIT"
+app_version = "1.0.0"
+
+required_apps = []
+
+fixtures = [
+    {
+        "dt": "Role",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Meeting Room User",
+                    "Meeting Room Manager",
+                ],
+            ]
+        ]
+    },
+    {
+        "dt": "Workflow",
+        "filters": [
+            [
+                "name",
+                "=",
+                "Meeting Reservation Approval",
+            ]
+        ]
+    },
+    {
+        "dt": "Workflow State",
+        "filters": [
+            [
+                "parent",
+                "=",
+                "Meeting Reservation Approval",
+            ]
+        ]
+    },
+    {
+        "dt": "Workflow Action",
+        "filters": [
+            [
+                "parent",
+                "=",
+                "Meeting Reservation Approval",
+            ]
+        ]
+    },
+]
+
+docevents = {
+    "Room Reservation": {
+        "on_update": "nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.validate_reservation",
+        "before_insert": "nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.set_default_fields",
+    }
+}
+
+doctype_js = {
+    "Room Reservation": "public/js/room_reservation.js",
+}
+
+# App configuration hooks

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nsd_reservations"
+version = "1.0.0"
+description = "Meeting Room Reservation Module for ERPNext"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "NSD", email = "info@nsd.com"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "frappe>=16.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "flake8",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nsd_reservations*"]
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]

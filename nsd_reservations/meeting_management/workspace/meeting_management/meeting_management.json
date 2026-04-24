@@ -1,0 +1,22 @@
+{
+  "name": "Meeting Management",
+  "content": "[{\"type\": \"header\", \"data\": {\"text\": \"Meeting Management\", \"level\": 4, \"column\": \"true\"}}, {\"type\": \"card\", \"data\": {\"card_name\": \"Quick Links\", \"links\": [{\"type\": \"link\", \"data\": {\"link_to\": \"Room Reservation\", \"link_type\": \"DocType\", \"label\": \"New Reservation\"}}, {\"type\": \"link\", \"data\": {\"link_to\": \"List/Room Reservation\", \"link_type\": \"Tree\", \"label\": \"All Reservations\"}}, {\"type\": \"link\", \"data\": {\"link_to\": \"List/Meeting Room\", \"link_type\": \"Tree\", \"label\": \"Meeting Rooms\"}}, {\"type\": \"link\", \"data\": {\"link_to\": \"List/Room Reservation?-filter=[[Room Reservation, workflow_state, =, Pending Manager Approval]]\", \"link_type\": \"Report\", \"label\": \"Pending Approvals\"}}]}}, {\"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"links\": [{\"type\": \"link\", \"data\": {\"link_to\": \"room_reservation_summary\", \"link_type\": \"Report\", \"label\": \"Reservation Summary\"}}]}}]",
+  "doctype": "Workspace",
+  "title": "Meeting Management",
+  "icon": "calendar",
+  "module": "Meeting Management",
+  "shortcut": "",
+  "is_hidden": 0,
+  "sequence_id": 0,
+  "roles": [
+    {
+      "role": "Meeting Room User"
+    },
+    {
+      "role": "Meeting Room Manager"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}
