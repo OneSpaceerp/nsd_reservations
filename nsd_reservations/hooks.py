@@ -61,8 +61,5 @@ docevents = {
     }
 }
 
-doctype_js = {
-    "Room Reservation": "public/js/room_reservation.js",
-}
 
-# App configuration hooks
+
