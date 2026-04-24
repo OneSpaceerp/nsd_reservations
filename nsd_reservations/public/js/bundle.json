@@ -1,0 +1,5 @@
+{
+  "app": "nsd_reservations",
+  "default" : [],
+  "override_workspace" : []
+}
