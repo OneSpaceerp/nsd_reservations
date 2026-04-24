@@ -6,5 +6,13 @@
     "reference_doctype": "Room Reservation",
     "module": "Meeting Management",
     "is_standard": 1,
-    "columns": ["meeting_room", "start_time", "end_time", "person_in_charge", "department", "status", "approved_by"]
+    "columns": [
+        {"fieldname": "meeting_room", "doctype": "Report Column"},
+        {"fieldname": "start_time", "doctype": "Report Column"},
+        {"fieldname": "end_time", "doctype": "Report Column"},
+        {"fieldname": "person_in_charge", "doctype": "Report Column"},
+        {"fieldname": "department", "doctype": "Report Column"},
+        {"fieldname": "status", "doctype": "Report Column"},
+        {"fieldname": "approved_by", "doctype": "Report Column"}
+    ]
 }
