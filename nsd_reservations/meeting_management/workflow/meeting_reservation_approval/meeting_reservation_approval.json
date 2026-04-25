@@ -3,37 +3,76 @@
     "doctype": "Workflow",
     "document_type": "Room Reservation",
     "workflow_state_field": "workflow_state",
+    "is_active": 1,
+    "send_email_alert": 0,
     "states": [
-        {"state": "Draft", "doc_status": 0, "allow_edit": 1},
-        {"state": "Pending Manager Approval", "doc_status": 0, "allow_edit": 1},
-        {"state": "Reserved", "doc_status": 1, "allow_edit": 0},
-        {"state": "Rejected", "doc_status": 2, "allow_edit": 0},
-        {"state": "Cancelled", "doc_status": 2, "allow_edit": 0}
+        {
+            "state": "Draft",
+            "doc_status": "0",
+            "style": "Warning",
+            "allow_edit": "Meeting Room User"
+        },
+        {
+            "state": "Pending Manager Approval",
+            "doc_status": "0",
+            "style": "Warning",
+            "allow_edit": "Meeting Room Manager"
+        },
+        {
+            "state": "Reserved",
+            "doc_status": "1",
+            "style": "Success",
+            "allow_edit": "Meeting Room Manager"
+        },
+        {
+            "state": "Rejected",
+            "doc_status": "2",
+            "style": "Danger",
+            "allow_edit": ""
+        },
+        {
+            "state": "Cancelled",
+            "doc_status": "2",
+            "style": "Danger",
+            "allow_edit": ""
+        }
     ],
     "transitions": [
         {
-            "transition": "Draft to Pending",
-            "from_state": "Draft",
-            "to_state": "Pending Manager Approval",
-            "allowed_roles": ["Meeting Room User", "Meeting Room Manager"]
+            "state": "Draft",
+            "action": "Submit for Approval",
+            "next_state": "Pending Manager Approval",
+            "allowed": "Meeting Room User"
         },
         {
-            "transition": "Pending to Reserved",
-            "from_state": "Pending Manager Approval",
-            "to_state": "Reserved",
-            "allowed_roles": ["Meeting Room Manager"]
+            "state": "Draft",
+            "action": "Submit for Approval",
+            "next_state": "Pending Manager Approval",
+            "allowed": "Meeting Room Manager"
         },
         {
-            "transition": "Pending to Rejected",
-            "from_state": "Pending Manager Approval",
-            "to_state": "Rejected",
-            "allowed_roles": ["Meeting Room Manager"]
+            "state": "Pending Manager Approval",
+            "action": "Approve",
+            "next_state": "Reserved",
+            "allowed": "Meeting Room Manager"
         },
         {
-            "transition": "Reserved to Cancelled",
-            "from_state": "Reserved",
-            "to_state": "Cancelled",
-            "allowed_roles": ["Meeting Room Manager", "System Manager"]
+            "state": "Pending Manager Approval",
+            "action": "Reject",
+            "next_state": "Rejected",
+            "allowed": "Meeting Room Manager"
+        },
+        {
+            "state": "Reserved",
+            "action": "Cancel Reservation",
+            "next_state": "Cancelled",
+            "allowed": "Meeting Room Manager"
+        },
+        {
+            "state": "Reserved",
+            "action": "Cancel Reservation",
+            "next_state": "Cancelled",
+            "allowed": "System Manager"
         }
     ]
 }

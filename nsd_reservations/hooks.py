@@ -17,10 +17,9 @@ modules = [
 
 doc_events = {}
 
-doctype_js = {
-    "Room Reservation": "public/js/room_reservation.js",
-    "Meeting Room": "public/js/meeting_room.js",
-}
+# DocType JS files in the doctype folder are loaded automatically by Frappe.
+# The public/js entries below are kept for backward compatibility only.
+doctype_js = {}
 
-fixtures = ["Role", "Workflow", "Report", "Workspace", "Dashboard Chart", "Number Card"]
+fixtures = ["Role", "Workflow", "Page", "Report", "Workspace", "Dashboard Chart", "Number Card"]
 scheduler_events = {}

@@ -1,0 +1,263 @@
+/* ── Meeting Roster Page ─────────────────────────────────────────────────── */
+
+.mr-body {
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 110px);
+	overflow: hidden;
+}
+
+/* ── Control bar (month nav + filters) ─────────────────────────────────── */
+
+.mr-control-bar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	padding: 10px 16px;
+	border-bottom: 1px solid var(--border-color);
+	background: var(--fg-color);
+	flex-shrink: 0;
+}
+
+.mr-nav {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.mr-nav-btn {
+	font-size: 16px;
+	line-height: 1;
+	padding: 2px 8px;
+}
+
+.mr-month-label {
+	font-size: 13px;
+	font-weight: 600;
+	min-width: 130px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.mr-filter-item {
+	min-width: 145px;
+}
+
+.mr-filter-item .form-group {
+	margin-bottom: 0 !important;
+}
+
+.mr-filter-item .control-input-wrapper {
+	margin-top: 0 !important;
+}
+
+.mr-clear-btn {
+	padding: 3px 9px;
+	font-size: 13px;
+}
+
+/* ── Grid area ──────────────────────────────────────────────────────────── */
+
+.mr-grid-area {
+	flex: 1;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.mr-scroll {
+	flex: 1;
+	overflow: auto;
+	position: relative;
+}
+
+/* ── Table ──────────────────────────────────────────────────────────────── */
+
+.mr-table {
+	border-collapse: collapse;
+	min-width: 100%;
+	table-layout: fixed;
+}
+
+.mr-table th,
+.mr-table td {
+	border: 1px solid var(--border-color);
+	vertical-align: top;
+	padding: 0;
+}
+
+/* ── Header row ─────────────────────────────────────────────────────────── */
+
+.mr-th-room {
+	width: 190px;
+	min-width: 190px;
+	position: sticky;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	background: var(--fg-color);
+	padding: 8px;
+	border-right: 2px solid var(--border-color);
+}
+
+.mr-room-search {
+	width: 100%;
+	font-size: 12px;
+	height: 28px;
+	padding: 3px 8px;
+}
+
+.mr-th-day {
+	width: 90px;
+	min-width: 80px;
+	text-align: center;
+	padding: 6px 4px;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	background: var(--fg-color);
+	white-space: nowrap;
+}
+
+.mr-th-day.is-today {
+	background: var(--blue-highlight-color, #e0f2fe);
+}
+
+.mr-th-day.is-weekend {
+	background: var(--gray-50, #f9fafb);
+}
+
+.mr-day-abbr {
+	display: block;
+	font-size: 10px;
+	color: var(--text-muted);
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.mr-day-num {
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--text-color);
+}
+
+.mr-th-day.is-today .mr-day-num {
+	color: var(--primary, #5b7af0);
+}
+
+/* ── Room name cell ─────────────────────────────────────────────────────── */
+
+.mr-td-room {
+	position: sticky;
+	left: 0;
+	z-index: 1;
+	background: var(--fg-color);
+	min-width: 190px;
+	width: 190px;
+	border-right: 2px solid var(--border-color);
+	padding: 8px 10px;
+}
+
+.mr-room-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.mr-avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: var(--primary, #5b7af0);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.mr-room-info {
+	overflow: hidden;
+}
+
+.mr-room-name {
+	font-size: 12px;
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-color);
+}
+
+.mr-room-sub {
+	font-size: 10px;
+	color: var(--text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ── Day cells ──────────────────────────────────────────────────────────── */
+
+.mr-td-day {
+	padding: 3px;
+	min-height: 52px;
+	cursor: pointer;
+	vertical-align: top;
+}
+
+.mr-td-day:hover {
+	background: var(--hover-bg, rgba(0, 0, 0, 0.04)) !important;
+}
+
+.mr-td-day.is-today {
+	background: var(--blue-highlight-color, #e0f2fe);
+}
+
+.mr-td-day.is-weekend {
+	background: var(--gray-50, #f9fafb);
+}
+
+/* ── Reservation chips ──────────────────────────────────────────────────── */
+
+.mr-chip {
+	border-radius: 4px;
+	border-left: 3px solid;
+	padding: 3px 5px;
+	margin-bottom: 2px;
+	cursor: pointer;
+	font-size: 11px;
+	line-height: 1.4;
+	transition: filter 0.1s;
+	overflow: hidden;
+}
+
+.mr-chip:hover {
+	filter: brightness(0.93);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.mr-chip-title {
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mr-chip-time {
+	font-size: 10px;
+	opacity: 0.85;
+}
+
+/* ── Empty state ────────────────────────────────────────────────────────── */
+
+.mr-empty {
+	text-align: center;
+	padding: 48px 24px;
+	color: var(--text-muted);
+	font-size: 13px;
+}

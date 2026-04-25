@@ -1,0 +1,14 @@
+{
+    "doctype": "Page",
+    "module": "Meeting Management",
+    "name": "meeting-roster",
+    "page_name": "meeting-roster",
+    "title": "Meeting Roster",
+    "standard": "Yes",
+    "system_page": 0,
+    "roles": [
+        {"role": "Meeting Room User"},
+        {"role": "Meeting Room Manager"},
+        {"role": "System Manager"}
+    ]
+}
