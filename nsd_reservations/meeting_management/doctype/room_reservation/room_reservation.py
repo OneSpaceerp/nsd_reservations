@@ -160,6 +160,33 @@ class RoomReservation(Document):
 # ── whitelisted API for the Roster page ──────────────────────────────────────
 
 @frappe.whitelist()
+def create_and_submit_reservation(doc_data):
+    """Create a reservation and immediately advance it to Pending Manager Approval."""
+    import json
+    from frappe.model.workflow import apply_workflow, get_transitions
+
+    if isinstance(doc_data, str):
+        doc_data = json.loads(doc_data)
+
+    doc_data["doctype"] = "Room Reservation"
+    doc = frappe.get_doc(doc_data)
+    doc.insert()
+
+    # Find whichever action leads to Pending Manager Approval and apply it.
+    # This avoids hardcoding the action label ("Submit", "Submit for Approval", etc.)
+    try:
+        for t in get_transitions(doc):
+            if t.get("next_state") == "Pending Manager Approval":
+                apply_workflow(doc, t["action"])
+                break
+    except Exception:
+        # Workflow not active or user lacks permission — leave as Draft
+        pass
+
+    return doc.as_dict()
+
+
+@frappe.whitelist()
 def get_month_reservations(year, month):
     year  = int(year)
     month = int(month)

@@ -331,29 +331,31 @@ class MeetingRoster {
 					`${room.room_name} - ${values.meeting_reason}`;
 
 				frappe.call({
-					method: 'frappe.client.insert',
+					method: 'nsd_reservations.meeting_management.doctype.room_reservation.room_reservation.create_and_submit_reservation',
 					args: {
-						doc: {
-							doctype:              'Room Reservation',
-							meeting_room:         room.name,
-							reservation_title:    title,
-							start_time:           values.start_time,
-							end_time:             values.end_time,
-							person_in_charge:     values.person_in_charge,
-							department:           values.department,
-							meeting_reason:       values.meeting_reason,
-							number_of_attendees:  values.number_of_attendees,
-							notes:                values.notes || '',
+						doc_data: {
+							meeting_room:        room.name,
+							reservation_title:   title,
+							start_time:          values.start_time,
+							end_time:            values.end_time,
+							person_in_charge:    values.person_in_charge,
+							department:          values.department,
+							meeting_reason:      values.meeting_reason,
+							number_of_attendees: values.number_of_attendees,
+							notes:               values.notes || '',
 						},
 					},
 					freeze: true,
-					freeze_message: __('Saving reservation…'),
+					freeze_message: __('Submitting reservation…'),
 					callback: r => {
 						if (r.message) {
 							d.hide();
+							const state = r.message.workflow_state || 'Draft';
 							frappe.show_alert({
-								message: __('Reservation {0} created', [`<b>${r.message.name}</b>`]),
-								indicator: 'green',
+								message: __('Reservation {0} — {1}', [
+									`<b>${r.message.name}</b>`, __(state),
+								]),
+								indicator: state === 'Pending Manager Approval' ? 'orange' : 'green',
 							}, 5);
 							this.load();
 						}
