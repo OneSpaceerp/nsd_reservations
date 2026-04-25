@@ -201,6 +201,25 @@
 	text-overflow: ellipsis;
 }
 
+/* ── Holiday header ─────────────────────────────────────────────────────── */
+
+.mr-th-day.is-holiday {
+	background: var(--red-50, #fff1f2);
+}
+
+.mr-th-day.is-holiday .mr-day-num {
+	color: var(--red-500, #ef4444);
+}
+
+.mr-holiday-dot {
+	display: block;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--red-400, #f87171);
+	margin: 2px auto 0;
+}
+
 /* ── Day cells ──────────────────────────────────────────────────────────── */
 
 .mr-td-day {
@@ -208,6 +227,7 @@
 	min-height: 52px;
 	cursor: pointer;
 	vertical-align: top;
+	position: relative;   /* needed for the + button */
 }
 
 .mr-td-day:hover {
@@ -220,6 +240,40 @@
 
 .mr-td-day.is-weekend {
 	background: var(--gray-50, #f9fafb);
+}
+
+.mr-td-day.is-holiday {
+	background: var(--red-50, #fff1f2);
+}
+
+/* ── Add button (+ shown on hover) ─────────────────────────────────────── */
+
+.mr-add-btn {
+	display: none;
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--primary, #5b7af0);
+	color: #fff;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+	cursor: pointer;
+	opacity: 0.85;
+	transition: opacity 0.15s, transform 0.1s;
+	z-index: 1;
+}
+
+.mr-td-day:hover .mr-add-btn {
+	display: block;
+}
+
+.mr-add-btn:hover {
+	opacity: 1;
+	transform: scale(1.15);
 }
 
 /* ── Reservation chips ──────────────────────────────────────────────────── */

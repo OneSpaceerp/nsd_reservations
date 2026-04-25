@@ -190,4 +190,39 @@ def get_month_reservations(year, month):
         order_by="sort_order asc, room_name asc",
     )
 
-    return {"rooms": rooms, "reservations": reservations}
+    holidays = _get_month_holidays(year, month, start, end)
+
+    return {"rooms": rooms, "reservations": reservations, "holidays": holidays}
+
+
+def _get_month_holidays(year, month, start, end):
+    """Return holidays for the month from the default company's holiday list."""
+    try:
+        default_company = frappe.db.get_single_value("Global Defaults", "default_company")
+        if not default_company:
+            return []
+
+        holiday_list = frappe.db.get_value("Company", default_company, "default_holiday_list")
+        if not holiday_list:
+            return []
+
+        rows = frappe.db.get_all(
+            "Holiday",
+            filters={
+                "parent":       holiday_list,
+                "holiday_date": ["between", [start, end]],
+            },
+            fields=["holiday_date", "description"],
+        )
+
+        result = []
+        for r in rows:
+            hdate = r.holiday_date
+            # holiday_date may be a date object or a string depending on Frappe version
+            date_str = hdate.strftime("%Y-%m-%d") if hasattr(hdate, "strftime") else str(hdate)
+            result.append({"date": date_str, "description": r.description or ""})
+        return result
+
+    except Exception:
+        # Never break the calendar just because holidays couldn't be fetched
+        return []
